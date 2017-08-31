@@ -1,0 +1,23 @@
+body {
+    background-color: #f3fafe;
+	
+}
+
+th {
+    background-color:#79b9e1;
+    color: white;
+}
+
+tr:nth-child(odd) {background-color: #e7f5fe}
+tr:nth-child(even) {background-color: white}
+
+h1{
+	  font-size: 250%;
+	 
+	  
+	   
+}
+h2{
+	  font-size: 250%;
+	   color:#5e90af;
+}
