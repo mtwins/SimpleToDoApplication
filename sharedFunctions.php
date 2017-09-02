@@ -7,7 +7,6 @@ function addTask($task) {
     $connection=connectToDatabase();
 	$sql="INSERT INTO tasks(`taskName`)VALUES('$task');";
 	$result = mysqli_query($connection, $sql);
-	viewTable();
   
 }
 
@@ -25,16 +24,17 @@ function deleteTask($task) {
     )";
 	
 	$result2 = mysqli_query($connection, $sql);
+	//validation for delete function(task does not exist)
 	if(mysqli_num_rows($result2)==0)
 	{
-		echo "<h3 style=color:red;>The task you are trying to delete does not exist. </h3>";
+		echo "<h3 style=color:red;>The task you are trying to delete does not exist. Please enter a valid task id. </h3>";
 	}
 	$row2 = mysqli_fetch_assoc($result2);
 	$num= $row2["idtasks"];
 	//delete the row from the table
 	$sql1="DELETE FROM tasks WHERE idtasks='$num';";
 	$result1 = mysqli_query($connection, $sql1);
-	viewTable();
+
 }
 
 
@@ -44,9 +44,10 @@ function viewTable()
 	$connection=connectToDatabase();
 	$sql="Select * from tasks;";
 	$result = mysqli_query($connection, $sql);
-	
+	//check if table has values
 		if(mysqli_num_rows($result)>0)
 		{
+			//print table
 			echo "<style>" . "table, th, td {" . "border: 1px solid black;" . "border-collapse: collapse;" . "th, td {" . 
 			"padding: 15px;" . "}" . "</style>";
 		echo "<table style=\"width:50%\">";

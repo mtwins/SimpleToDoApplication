@@ -15,16 +15,25 @@ include("sharedFunctions.php");
 
 	
 	$connection=connectToDatabase();
+	//if user submits add task button
 	if(isset($_POST['aSubmit']))
 	{
-	addTask($_POST['addbox']);
+		if($_POST['addbox']!="")
+		{
+			addTask($_POST['addbox']);
+		}
+		else
+		{
+			echo "<h3 style=color:red;>Please enter a name for your new task</h3>";
+		}
 	}
-	
+	//if user submits delete task button
 	if(isset($_POST['dSubmit']))
 	{
 	deleteTask($_POST['delbox']);
 	}
-
+	//view table function called- display table
+	viewTable();
 ?>
 
 <br><br>
@@ -35,10 +44,10 @@ Add New Task By Entering the Name:  <br><br>
 </form>
 <br><br>
 <?php
-$connection=connectToDatabase();
+//hide delete functionality if table is empty
+	$connection=connectToDatabase();
 	$sql="Select * from tasks;";
 	$result = mysqli_query($connection, $sql);
-	
 		if(mysqli_num_rows($result)>0)
 		{
 			?>
