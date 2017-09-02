@@ -34,11 +34,21 @@ Add New Task By Entering the Name:  <br><br>
 <input  type="submit" value="Add task" name='aSubmit' class="submit"  >
 </form>
 <br><br>
+<?php
+$connection=connectToDatabase();
+	$sql="Select * from tasks;";
+	$result = mysqli_query($connection, $sql);
+	
+		if(mysqli_num_rows($result)>0)
+		{
+			?>
 <form action = "home.php" method="post" target="_top">
 Enter Id of Completed Task for Deletion: <br> <br>
 <input name="delbox" type="textarea">
 <input type="submit" value="Delete task" name='dSubmit' class="submit">
 </form>
-
+<?php
+}
+?>
 </body>
 </html>
