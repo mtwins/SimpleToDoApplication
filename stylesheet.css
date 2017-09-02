@@ -1,20 +1,31 @@
 body {
-    background-color: #f3fafe;
 	
+    background-color: #f3fafe;
+	font-size: larger;
+    padding: 40px;
 }
-
+.submit {
+    background-color: #64a7d4;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 th {
     background-color:#79b9e1;
     color: white;
+	text-align: center;
 }
+tr:nth-child(odd) {background-color: #e7f5fe;}
+tr:nth-child(even) {background-color: white;}
 
-tr:nth-child(odd) {background-color: #e7f5fe}
-tr:nth-child(even) {background-color: white}
-
+table{
+}
 h1{
-	  font-size: 250%;
-	 
-	  
+	  font-size: 250%;  
 	   
 }
 h2{

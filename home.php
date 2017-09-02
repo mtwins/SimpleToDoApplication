@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<h1><center>To-Do Application<center> </h1>
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<h1><center>To-Do Application<center> </h1>
+
 </head>
 <body>
 <header>
@@ -12,19 +13,31 @@
 <?php
 include("sharedFunctions.php");
 
-	viewTable();
+	
+	$connection=connectToDatabase();
+	if(isset($_POST['aSubmit']))
+	{
+	addTask($_POST['addbox']);
+	}
+	
+	if(isset($_POST['dSubmit']))
+	{
+	deleteTask($_POST['delbox']);
+	}
 
 ?>
 
 <br><br>
-<form action = "add.php" method="post" target="_top">
-NewTaskName: <input name="addbox" type="textarea" >
-<input  type="submit" value="Add task"  >
+<form action = "home.php" method="post" target="_top" class='task'>
+Add New Task By Entering the Name:  <br><br>
+<input name="addbox" type="textarea" class='taskinput'>
+<input  type="submit" value="Add task" name='aSubmit' class="submit"  >
 </form>
 <br><br>
-<form action = "delete.php" method="post" target="_top">
-Id of Task to be Deleted<input name="delbox" type="textarea">
-<input type="submit" value="Delete task" >
+<form action = "home.php" method="post" target="_top">
+Enter Id of Completed Task for Deletion: <br> <br>
+<input name="delbox" type="textarea">
+<input type="submit" value="Delete task" name='dSubmit' class="submit">
 </form>
 
 </body>
